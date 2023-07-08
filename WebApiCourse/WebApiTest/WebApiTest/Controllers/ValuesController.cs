@@ -4,6 +4,7 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using EmployeeVM;
 
 namespace WebApiTest.Controllers
 {
@@ -11,16 +12,47 @@ namespace WebApiTest.Controllers
     public class ValuesController : ApiController
     {
         // GET api/values
-        public IEnumerable<string> Get()
+        public Employee Get()
         {
-            return new string[] { "value1", "value2" };
+            return new Employee
+            {
+                EmployeeName = "Amit",
+                EmployeeCode = "001",
+                Salary = "$4500"
+            };
+
+            //return new string[] { "value1", "value2" };
         }
 
-        // GET api/values/5
-        public string Get(int id)
+        public IList<Employee> Get(string id)
         {
-            return "value";
+            return new List<Employee>()
+            {
+                new Employee
+                {
+                    EmployeeName = "Amit",
+                    EmployeeCode = "001",
+                    Salary = "$4500"
+                },
+                 new Employee
+                {
+                    EmployeeName = "Sumit",
+                    EmployeeCode = "002",
+                    Salary = "$5000"
+                }
+            };
+
+            //return new string[] { "value1", "value2" };
         }
+
+
+
+
+        // GET api/values/5
+        //public string Get(int id)
+        //{
+        //    return "value";
+        //}
 
         // POST api/values
         public void Post([FromBody]string value)
